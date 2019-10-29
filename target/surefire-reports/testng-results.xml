@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Command line suite" duration-ms="46826" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:51Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="46826" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:51Z">
+      <class name="basicflow.OrderCreationTest">
+        <test-method status="PASS" signature="initSuite()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="initSuite" is-config="true" duration-ms="165" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initSuite -->
+        <test-method status="PASS" signature="initTest(java.lang.reflect.Method)[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="initTest" is-config="true" duration-ms="10177" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void basicflow.OrderCreationTest.orderCreationUAE() throws java.lang.InterruptedException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initTest -->
+        <test-method status="PASS" signature="orderCreationUAE()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="orderCreationUAE" duration-ms="35666" started-at="2019-10-29T12:33:14Z" finished-at="2019-10-29T12:33:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- orderCreationUAE -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="tearDown" is-config="true" duration-ms="967" started-at="2019-10-29T12:33:50Z" finished-at="2019-10-29T12:33:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="writeReport()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="writeReport" is-config="true" duration-ms="230" started-at="2019-10-29T12:33:51Z" finished-at="2019-10-29T12:33:51Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- writeReport -->
+      </class> <!-- basicflow.OrderCreationTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- Command line suite -->
+</testng-results>

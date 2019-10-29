@@ -1,0 +1,7 @@
+pages\ProductPage.class
+pages\LoginPage.class
+utility\Config.class
+pages\SwitchCountryPage.class
+utility\BrowserInit.class
+pages\Homepage.class
+pages\PageBase.class
