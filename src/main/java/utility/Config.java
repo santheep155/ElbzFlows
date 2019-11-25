@@ -54,4 +54,8 @@ public class Config {
 	public static long getOrderCount() {
 		return Long.parseLong(properties.getProperty("ordercount").toString());
 	}
+	
+	public static String getStoreName() {
+		return properties.getProperty("store").toString();
+	}
 }

@@ -8,9 +8,13 @@ import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utility.Config;
+
 public class ProductPage extends PageBase {
 	WebDriver driver;
-
+	LoginPage loginpage2;
+	Homepage hmpage2;
+	
 	public ProductPage(WebDriver driver) {
 
 		this.driver = driver;
@@ -20,6 +24,9 @@ public class ProductPage extends PageBase {
 	
 	@FindBy(xpath = "//span[@id='main-nav-men']")
 	private WebElement menuMen;
+	
+	@FindAll(@FindBy(xpath = "//span[@id='main-nav-men']"))
+	private List<WebElement> findAllMenus;
 
 	@FindBy(xpath = "//a[@id='division-menu-item-brands']")
 	private WebElement brandLink;
@@ -73,8 +80,13 @@ public class ProductPage extends PageBase {
 	private WebElement creoProduct;
 		
 	public boolean isMenuVisible() {
-		waitForElement(driver, menuMen, 20);
+		waitForElement(driver, menuMen, 10);
 		return menuMen.isDisplayed();
+	}
+	
+	public int menuSize()
+	{
+		return findAllMenus.size();
 	}
 	
 	public boolean isBrandsVisible() {
@@ -150,8 +162,27 @@ public class ProductPage extends PageBase {
 	}
 
 	public void singleTransaction(long orderCount) throws InterruptedException {
-		menuMen.click();
-		System.out.println("Clicked on Menu : Men");
+		
+		if(menuSize()==0)
+		{
+			driver.navigate().to("http://elabelz.com/ae/c/men");
+			System.out.println("Menu Menu not visible");
+			hmpage2 = new Homepage(driver);
+			hmpage2.clickLogin();
+			Thread.sleep(3000);
+			loginpage2 = new LoginPage(driver);
+			loginpage2.isLoginTextVisible();
+			loginpage2.login(Config.getUsername(), Config.getPassword());
+			Thread.sleep(3000);
+			isMenuVisible();
+			menuMen.click();
+			System.out.println("Clicked on Menu : Men");
+			
+		}else {
+			isMenuVisible();
+			menuMen.click();
+			System.out.println("Clicked on Menu : Men");
+		}
 	
 		isBrandsVisible();
 		brandLink.click();

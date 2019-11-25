@@ -52,10 +52,13 @@ public class LoginPage extends PageBase{
 	{
 		username.clear();
 		username.sendKeys(unam);
+		System.out.println("Enter Username");
 		password.clear();
 		password.sendKeys(pwd);
+		System.out.println("Enter Password");
 		isSignInVisible();
 		clickSignin.click();
+		System.out.println("Click SignIn");
 	}
 
 	

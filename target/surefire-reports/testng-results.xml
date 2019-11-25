@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="46826" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:51Z">
+  <suite name="Suite" duration-ms="43646" started-at="2019-11-25T06:03:03Z" finished-at="2019-11-25T06:03:46Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="46826" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:51Z">
+    <test name="Test" duration-ms="43646" started-at="2019-11-25T06:03:03Z" finished-at="2019-11-25T06:03:46Z">
       <class name="basicflow.OrderCreationTest">
-        <test-method status="PASS" signature="initSuite()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="initSuite" is-config="true" duration-ms="165" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:04Z">
+        <test-method status="PASS" signature="initSuite()[pri:0, instance:basicflow.OrderCreationTest@54a097cc]" name="initSuite" is-config="true" duration-ms="114" started-at="2019-11-25T06:03:03Z" finished-at="2019-11-25T06:03:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initSuite -->
-        <test-method status="PASS" signature="initTest(java.lang.reflect.Method)[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="initTest" is-config="true" duration-ms="10177" started-at="2019-10-29T12:33:04Z" finished-at="2019-10-29T12:33:14Z">
+        <test-method status="PASS" signature="initTest(java.lang.reflect.Method)[pri:0, instance:basicflow.OrderCreationTest@54a097cc]" name="initTest" is-config="true" duration-ms="6707" started-at="2019-11-25T06:03:03Z" finished-at="2019-11-25T06:03:09Z">
           <params>
             <param index="0">
               <value>
@@ -22,19 +22,19 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initTest -->
-        <test-method status="PASS" signature="orderCreationUAE()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="orderCreationUAE" duration-ms="35666" started-at="2019-10-29T12:33:14Z" finished-at="2019-10-29T12:33:50Z">
+        <test-method status="PASS" signature="orderCreationUAE()[pri:0, instance:basicflow.OrderCreationTest@54a097cc]" name="orderCreationUAE" duration-ms="35816" started-at="2019-11-25T06:03:09Z" finished-at="2019-11-25T06:03:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- orderCreationUAE -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="tearDown" is-config="true" duration-ms="967" started-at="2019-10-29T12:33:50Z" finished-at="2019-10-29T12:33:51Z">
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:basicflow.OrderCreationTest@54a097cc]" name="tearDown" is-config="true" duration-ms="1107" started-at="2019-11-25T06:03:45Z" finished-at="2019-11-25T06:03:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="writeReport()[pri:0, instance:basicflow.OrderCreationTest@38082d64]" name="writeReport" is-config="true" duration-ms="230" started-at="2019-10-29T12:33:51Z" finished-at="2019-10-29T12:33:51Z">
+        <test-method status="PASS" signature="writeReport()[pri:0, instance:basicflow.OrderCreationTest@54a097cc]" name="writeReport" is-config="true" duration-ms="223" started-at="2019-11-25T06:03:46Z" finished-at="2019-11-25T06:03:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- writeReport -->
       </class> <!-- basicflow.OrderCreationTest -->
-    </test> <!-- Command line test -->
-  </suite> <!-- Command line suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

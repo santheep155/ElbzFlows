@@ -19,10 +19,25 @@ public class Homepage extends PageBase{
 	@FindBy(xpath="//div[@id='myAccount']")
 	private WebElement loginbutton;
 	
+	@FindBy(xpath="//a[contains(@href,'home')]")
+	private WebElement homelink;
 	
 	public boolean isLoginButtonVisible() {
 		waitForElement(driver, loginbutton, 20);
 		return loginbutton.isDisplayed();
+	}
+	
+	public boolean isHomeLinkVisible() {
+		waitForElement(driver, homelink, 20);
+		return homelink.isDisplayed();
+	}
+	
+	public void clickHome()
+	{
+		isHomeLinkVisible();
+		System.out.println("Login button visible");
+		homelink.click();
+		System.out.println("Login button click");
 	}
 	
 	public void clickLogin()
