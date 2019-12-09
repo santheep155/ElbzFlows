@@ -40,8 +40,9 @@ public class ProductPage extends PageBase {
 	@FindAll(@FindBy(xpath = "//a[@id='goToMyBag']/div"))
 	private List<WebElement> findCartCount;
 
-	@FindBy(xpath = "//span[contains(text(),'Move to bag')]")
+	@FindBy(xpath = "//button[contains(@class,'moveToBag')]/span")
 	private WebElement movetoBag;
+	
 
 	@FindBy(xpath = "//span[contains(text(),'Item added to the cart')]")
 	private WebElement itemexists;
@@ -195,11 +196,12 @@ public class ProductPage extends PageBase {
 		for (int i = 0; i < orderCount; i++) {
 			getAllProducts(i).click();
 			System.out.println("Clicked on the product: " + i);
-			if (isBagVisible()) {
+			if (movetoBag.getText().equalsIgnoreCase("Move to bag")) {
 				movetoBag.click();
 				System.out.println(i+" product added to the cart");
 
-			} else {
+			} else if (movetoBag.getText().equalsIgnoreCase("Item added to the cart")){
+				driver.navigate().back();
 				System.out.println("Move to Bag button not available");
 			}
 			Thread.sleep(4000);

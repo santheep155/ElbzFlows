@@ -23,7 +23,6 @@ public class OrderCreationTest extends TestBase {
 
 	@Test
 	public void orderCreationUAE() throws InterruptedException {
-
 		hmpage = new Homepage(getDriver());
 		Assert.assertEquals(hmpage.isLoginButtonVisible(), true, "Login button not visible");
 		reporter().log(LogStatus.PASS, "Clicked on SignIn button");
@@ -37,16 +36,9 @@ public class OrderCreationTest extends TestBase {
 		reporter().log(LogStatus.PASS, "Successfully Logged in to user account");
 		Thread.sleep(2000);
 		
-		/*
-		 * swpage = new SwitchCountryPage(getDriver()); if
-		 * (Config.getStoreName().equalsIgnoreCase("SA")) { swpage.switchToSaudi();
-		 * Thread.sleep(2000); } else if (Config.getStoreName().equalsIgnoreCase("UAE"))
-		 * { System.out.println("Store switched to UAE"); }
-		 */
 		pdtpage = new ProductPage(getDriver());
 		pdtpage.singleTransaction(Config.getOrderCount());
 		System.out.println("Order placed successfully. Order Number is: " + pdtpage.getOrderNumber());
 		reporter().log(LogStatus.PASS, "Order placed successfully. Order Number is: " + pdtpage.getOrderNumber());
-
 	}
 }
