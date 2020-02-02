@@ -1,7 +1,0 @@
-pages\ProductPage.class
-pages\LoginPage.class
-pages\SwitchCountryPage.class
-utility\BrowserInit.class
-pages\Homepage.class
-pages\PageBase.class
-utility\Config.class

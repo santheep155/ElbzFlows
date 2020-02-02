@@ -14,21 +14,21 @@ public class ProductPage extends PageBase {
 	WebDriver driver;
 	LoginPage loginpage2;
 	Homepage hmpage2;
-	
+
 	public ProductPage(WebDriver driver) {
 
 		this.driver = driver;
 
 		PageFactory.initElements(driver, this);
 	}
-	
+
 	@FindBy(xpath = "//span[@id='main-nav-men']")
 	private WebElement menuMen;
-	
+
 	@FindAll(@FindBy(xpath = "//span[@id='main-nav-men']"))
 	private List<WebElement> findAllMenus;
 
-	@FindBy(xpath = "//a[@id='division-menu-item-brands']")
+	@FindBy(xpath = "//div[@id='division-menu-item-brands']")
 	private WebElement brandLink;
 
 	@FindBy(xpath = "//a[@class='productLink']")
@@ -42,15 +42,11 @@ public class ProductPage extends PageBase {
 
 	@FindBy(xpath = "//button[contains(@class,'moveToBag')]/span")
 	private WebElement movetoBag;
-	
 
 	@FindBy(xpath = "//span[contains(text(),'Item added to the cart')]")
 	private WebElement itemexists;
 
-	//@FindBy(xpath = "//a[@id='goToMyBag']//*[@class='fH6iX']")
-	//private WebElement gotoCart;
-	
-	@FindBy(xpath = "//div[@class='O6_pX _3VxWs _14rgO']//div[5]")
+	@FindBy(xpath = "//a[@id='goToMyBag']//*[@class='fH6iX']")
 	private WebElement gotoCart;
 
 	@FindBy(xpath = "//span[contains(text(),'Checkout')]")
@@ -70,7 +66,7 @@ public class ProductPage extends PageBase {
 
 	@FindBy(xpath = "//*[text()='You have already reached maximum available quantity.']")
 	private WebElement fadeMessage;
-	
+
 	@FindBy(xpath = "//div[contains(text(),'Thank you for your order')]")
 	private WebElement confirmationMessage;
 
@@ -79,17 +75,19 @@ public class ProductPage extends PageBase {
 
 	@FindBy(xpath = "//a[text()='Creo']")
 	private WebElement creoProduct;
-		
+
+	@FindBy(xpath = "//span[text()='Continue shopping']")
+	private WebElement continueShopping;
+
 	public boolean isMenuVisible() {
 		waitForElement(driver, menuMen, 10);
 		return menuMen.isDisplayed();
 	}
-	
-	public int menuSize()
-	{
+
+	public int menuSize() {
 		return findAllMenus.size();
 	}
-	
+
 	public boolean isBrandsVisible() {
 		waitForElement(driver, brandLink, 20);
 		return brandLink.isDisplayed();
@@ -114,14 +112,13 @@ public class ProductPage extends PageBase {
 		waitForElement(driver, gotoCart, 20);
 		return gotoCart.isDisplayed();
 	}
-	
+
 	public boolean isCheckoutDisplayed() {
 		waitForElement(driver, checkoutButton, 20);
 		return checkoutButton.isDisplayed();
 	}
-	
 
-		public boolean isAddressDisplayed() {
+	public boolean isAddressDisplayed() {
 		waitForElement(driver, selectAddress, 10);
 		return selectAddress.isDisplayed();
 	}
@@ -144,8 +141,8 @@ public class ProductPage extends PageBase {
 	public boolean isPlaceOrderDisplayed() {
 		waitForElement(driver, placeOrderButton, 10);
 		return placeOrderButton.isDisplayed();
-	}	
-	
+	}
+
 	public boolean isCreoBrandVisible() {
 		waitForElement(driver, creoProduct, 10);
 		return creoProduct.isDisplayed();
@@ -156,16 +153,14 @@ public class ProductPage extends PageBase {
 		return confirmationMessage.isDisplayed();
 	}
 
-
 	public String getOrderNumber() {
-		String orderNum =(orderNumber.getText()).substring(13,26);
+		String orderNum = (orderNumber.getText()).substring(13, 26);
 		return orderNum;
 	}
 
 	public void singleTransaction(long orderCount) throws InterruptedException {
-		
-		if(menuSize()==0)
-		{
+
+		if (menuSize() == 0) {
 			driver.navigate().to("http://elabelz.com/ae/c/men");
 			System.out.println("Menu Menu not visible");
 			hmpage2 = new Homepage(driver);
@@ -178,68 +173,50 @@ public class ProductPage extends PageBase {
 			isMenuVisible();
 			menuMen.click();
 			System.out.println("Clicked on Menu : Men");
-			
-		}else {
+
+		} else {
 			isMenuVisible();
 			menuMen.click();
 			System.out.println("Clicked on Menu : Men");
 		}
-	
+
 		isBrandsVisible();
 		brandLink.click();
 		System.out.println("Clicked on Submenu : Brands");
-		
+
 		isCreoBrandVisible();
 		creoProduct.click();
+		Thread.sleep(3000);
+
 		System.out.println("Clicked on Creo");
-		
+
 		for (int i = 0; i < orderCount; i++) {
-			getAllProducts(i).click();
+			getAllProducts(i + 1).click();
 			System.out.println("Clicked on the product: " + i);
 			if (movetoBag.getText().equalsIgnoreCase("Move to bag")) {
+				Thread.sleep(3000);
 				movetoBag.click();
-				System.out.println(i+" product added to the cart");
-
-			} else if (movetoBag.getText().equalsIgnoreCase("Item added to the cart")){
+				System.out.println(i + " product added to the cart");
+				Thread.sleep(3000);
+				continueShopping.click();
+			} else if (movetoBag.getText().equalsIgnoreCase("Item added to the cart")) {
 				driver.navigate().back();
-				System.out.println("Move to Bag button not available");
+				System.out.println("Item is already added to cart");
+			} else if (movetoBag.getText().equalsIgnoreCase("Item was sold out")) {
+				driver.navigate().back();
+				System.out.println("Item is sold out");
 			}
-			Thread.sleep(4000);
-			driver.navigate().back();
 		}
 
 		System.out.println("All Products added to the cart");
-		
+
+
 		Thread.sleep(3000);
-		//isgotoCartDisplayed();
-		//gotoCart.click();
 		driver.navigate().to("https://www.elabelz.com/ae/my-bag");
 		System.out.println("Go to Cart");
-		
-		/*
-		 * if (driver.findElements(By.
-		 * xpath("//article/h3[text()='Your bag is currently empty']")).size() > 0) {
-		 * driver.findElement(By.xpath("//button/span[text()='Shop now']")).click();
-		 * Thread.sleep(3000);
-		 * driver.findElement(By.xpath("//span[@id='main-nav-men']")).click();
-		 * System.out.println("22222Men"); Thread.sleep(3000);
-		 * driver.findElement(By.xpath("//a[@id='division-menu-item-Clothing']")).click(
-		 * ); System.out.println("22222New Arrivals");
-		 * 
-		 * Thread.sleep(7000);
-		 * driver.findElement(By.xpath("(//a[@class='productLink'])[3]")).click();
-		 * Thread.sleep(5000);
-		 * driver.findElement(By.xpath("//span[text()='Move to bag']")).click();
-		 * Thread.sleep(10000); driver.findElement( By.xpath(
-		 * "//a[@id='goToMyBag']//*[@class='components-Header-Header-module__icon--fH6iX']"
-		 * )).click();
-		 * 
-		 * }
-		 * 
-		 * else{ System.out.println("Only one product"); }
-		 */
-		Thread.sleep(3000);
+
 		isCheckoutDisplayed();
+		Thread.sleep(4000);
 		checkoutButton.click();
 		System.out.println("Checkout click");
 
@@ -254,16 +231,15 @@ public class ProductPage extends PageBase {
 		isCODDisplayed();
 		codPayment.click();
 		System.out.println("COD click");
-		
-		
+
+		Thread.sleep(2000);
 		isPlaceOrderDisplayed();
 		System.out.println("Place Order displayed");
 		placeOrderButton.click();
 		System.out.println("Place Order clicked");
-		
+
 		isConfirmationVisible();
 		String confmessage = confirmationMessage.getText();
-		System.out.println("Test completed with message: " +confmessage);
-
+		System.out.println("Test completed with message: " + confmessage);
 	}
 }
