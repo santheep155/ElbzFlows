@@ -23,6 +23,10 @@ public class Config {
 		return Long.parseLong(properties.get("implicitWait").toString());
 	}
 	
+	public static long getPageLoadTimeout() {
+		return Long.parseLong(properties.get("pageloadtimeout").toString());
+	}
+	
 	public static String getChromeDriverLoc() {
 		return properties.getProperty("chromeDriverLoc").toString();
 	}

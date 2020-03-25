@@ -61,7 +61,7 @@ public class ProductPage extends PageBase {
 	@FindBy(xpath = "//span[contains(text(),'Pay by cash')]")
 	private WebElement codPayment;
 
-	@FindBy(xpath = "//span[contains(text(),'Place order and pay')]")
+	@FindBy(xpath = "//span[contains(text(),'Place order and pay')]/parent::button")
 	private WebElement placeOrderButton;
 
 	@FindBy(xpath = "//*[text()='You have already reached maximum available quantity.']")
@@ -73,8 +73,8 @@ public class ProductPage extends PageBase {
 	@FindBy(xpath = "//div[contains(text(),'Thank you for your order')]/following-sibling::p[1]")
 	private WebElement orderNumber;
 
-	@FindBy(xpath = "//a[text()='Creo']")
-	private WebElement creoProduct;
+	@FindBy(xpath = "//a[text()='Timex']")
+	private WebElement timexProduct;
 
 	@FindBy(xpath = "//span[text()='Continue shopping']")
 	private WebElement continueShopping;
@@ -138,14 +138,13 @@ public class ProductPage extends PageBase {
 
 	}
 
-	public boolean isPlaceOrderDisplayed() {
-		waitForElement(driver, placeOrderButton, 10);
-		return placeOrderButton.isDisplayed();
+	public void isPlaceOrderClickable() {
+		elementClickable(driver, placeOrderButton, 10);
 	}
 
-	public boolean isCreoBrandVisible() {
-		waitForElement(driver, creoProduct, 10);
-		return creoProduct.isDisplayed();
+	public boolean isTimexBrandVisible() {
+		waitForElement(driver, timexProduct, 10);
+		return timexProduct.isDisplayed();
 	}
 
 	public boolean isConfirmationVisible() {
@@ -169,7 +168,7 @@ public class ProductPage extends PageBase {
 			loginpage2 = new LoginPage(driver);
 			loginpage2.isLoginTextVisible();
 			loginpage2.login(Config.getUsername(), Config.getPassword());
-			Thread.sleep(3000);
+			Thread.sleep(7000);
 			isMenuVisible();
 			menuMen.click();
 			System.out.println("Clicked on Menu : Men");
@@ -184,11 +183,11 @@ public class ProductPage extends PageBase {
 		brandLink.click();
 		System.out.println("Clicked on Submenu : Brands");
 
-		isCreoBrandVisible();
-		creoProduct.click();
+		isTimexBrandVisible();
+		timexProduct.click();
 		Thread.sleep(3000);
 
-		System.out.println("Clicked on Creo");
+		System.out.println("Clicked on Timex");
 
 		for (int i = 0; i < orderCount; i++) {
 			getAllProducts(i + 1).click();
@@ -209,7 +208,6 @@ public class ProductPage extends PageBase {
 		}
 
 		System.out.println("All Products added to the cart");
-
 
 		Thread.sleep(3000);
 		driver.navigate().to("https://www.elabelz.com/ae/my-bag");
@@ -233,8 +231,8 @@ public class ProductPage extends PageBase {
 		System.out.println("COD click");
 
 		Thread.sleep(2000);
-		isPlaceOrderDisplayed();
-		System.out.println("Place Order displayed");
+		isPlaceOrderClickable();
+		System.out.println("Place Order is clickable");
 		placeOrderButton.click();
 		System.out.println("Place Order clicked");
 

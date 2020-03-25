@@ -35,6 +35,7 @@ public class BrowserInit {
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Config.getImplicitWaitTimeout(), TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Config.getPageLoadTimeout(), TimeUnit.SECONDS);
 		return driver;
 	}
 

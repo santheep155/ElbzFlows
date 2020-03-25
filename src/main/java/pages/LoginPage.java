@@ -60,8 +60,4 @@ public class LoginPage extends PageBase{
 		clickSignin.click();
 		System.out.println("Click SignIn");
 	}
-
-	
-	
-	
 }
