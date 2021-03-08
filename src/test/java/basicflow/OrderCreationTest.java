@@ -26,7 +26,7 @@ public class OrderCreationTest extends TestBase {
 		hmpage = new Homepage(getDriver());
 		Assert.assertEquals(hmpage.isLoginButtonVisible(), true, "Login button not visible");
 		reporter().log(LogStatus.PASS, "Clicked on SignIn button");
-		Thread.sleep(3000);
+		Thread.sleep(7000);
 		hmpage.clickLogin();
 
 		loginpage = new LoginPage(getDriver());
